@@ -1,5 +1,5 @@
 var webpack = require('webpack'); 
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');  
 module.exports = {  
   context: __dirname,
   entry: "./src/index.js",
@@ -14,11 +14,18 @@ module.exports = {
           plugins: ['react-html-attrs', 'transform-class-properties', 
                      'transform-decorators-legacy']
         }
+      },
+	    {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass')
       }
     ]
   },
   output: {
     path: __dirname,
     filename: "bundle.js"
-  }
+  },
+    plugins: [
+    new ExtractTextPlugin('src/assets/stylesheets/app.css', { allChunks: true })
+  ]
 };
