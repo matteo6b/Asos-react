@@ -13,6 +13,7 @@ import { AUTH_USER,
 
 
 const API_URL = 'http://localhost:3000/api';
+const CLIENT_ROOT_URL = 'http://localhost:8080';
 
 export function errorHandler(error) {
   return {
@@ -34,7 +35,7 @@ export function registerUser({ email,password }) {
       cookie.save('token', response.data.token, { path: '/' });
       cookie.save('user', response.data.user, { path: '/' });
       dispatch({ type: AUTH_USER });
-      browserHistory.push('/register/profile');
+     window.location.href = CLIENT_ROOT_URL + '/main';
     })
     .catch(response => dispatch(errorHandler(response.data.error)))
   }

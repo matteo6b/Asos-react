@@ -1,5 +1,5 @@
-
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+                  Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 // Schema defines how the user's data will be stored in MongoDB
@@ -14,11 +14,16 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  profile: {
+  firstName: { type: String },
+  lastName: { type: String },
+  img: { data: Buffer, contentType: String }
+  },
   role: {
     type: String,
     enum: ['Socio', 'Asociacion', 'Admin'],
-    default: 'Asociacion'
-    
+    default: 'Socio'
+
   }
 });
 

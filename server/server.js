@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const config = require('./config/main');
 const cors = require('cors');
+const routes = require('./routes');
 const port = 3000;
 
 // Use body-parser to get POST requests for API use
@@ -30,8 +31,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
-var routes = require('./routes');
-app.use('/api', routes);
+
+routes(app);
 
 
 

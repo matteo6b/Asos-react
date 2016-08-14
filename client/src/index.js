@@ -30,7 +30,7 @@ function logPageView() {
 }
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers);
+const store = createStoreWithMiddleware(reducers,{},window.devToolsExtension ? window.devToolsExtension(): undefined);
 
 const token = cookie.load('token');
 

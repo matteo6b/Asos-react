@@ -9,13 +9,13 @@ class Register extends Component {
 
   componentWillMount() {
     if(this.props.authenticated) {
-      this.context.router.push('/dashboard');
+      this.context.router.push('/main');
     }
   }
 
   componentWillUpdate(nextProps) {
     if(nextProps.authenticated) {
-      this.context.router.push('/dashboard');
+      this.context.router.push('/main');
     }
   }
 
